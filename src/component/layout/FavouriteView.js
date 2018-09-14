@@ -5,7 +5,7 @@ const FavouriteView = (props) => {
 
     return(
         <tr key={index}>
-            <td>{result.full_name}</td>
+            <td><a href={result.html_url}>{result.full_name}</a></td>
             <td>{result.language}</td>
             <td>-</td>
             <td><a href="#" onClick={() => onRemove(result)}>Remove</a></td>
