@@ -81,6 +81,7 @@ class App extends Component {
 						/>
 						<ResultList
 							resultList = {this.state.resultList}
+							favList = {this.state.favList}
 							onAdd = {this.onAdd}
 						/>
 					</div>

@@ -4,7 +4,7 @@ import ResultView from './ResultView'
 
 const ResultList = (props) => {
 
-    const { resultList, onAdd } = props
+    const { resultList, onAdd, favList } = props
 
     return(
         <Fragment>
@@ -23,6 +23,7 @@ const ResultList = (props) => {
                         key={index}
                         index={index}
                         result={result}
+                        favList={favList}
                         onAdd={onAdd}
                     />
                     )
