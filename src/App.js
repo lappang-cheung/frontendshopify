@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 import Search from './component/layout/Search'
 import ResultList from './component/layout/ResultList'
@@ -12,7 +13,8 @@ class App extends Component {
 		clientId: '294d20a0eff0847f0a18',
 		clientSecret: '54651c72e5577d36f2f3315c712c984ef03cb88c',
 		sort: 'created: asc',
-		search: ''
+		search: '',
+		errors: {}
 	}
 
 	onChange = (event) => {
@@ -27,18 +29,18 @@ class App extends Component {
 
 		const { search, sort, clientId, clientSecret} = this.state
 
-		
-		fetch(`https://api.github.com/users/${search}/repos?&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`)
-			.then(res => res.json())
-			.then(data => {
+		return axios.get(`https://api.github.com/users/${search}/repos?&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`)
+			.then(response => {
 				this.setState({
-					resultList: data
+					resultList: response.data
 				})
-				console.log(`The username is ${search}`)
-				console.log(`https://api.github.com/users/${search}/repos?&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`)
 				console.log(this.state.resultList[0])
 			})
-			.catch(err => console.log(err))
+			.catch(function(error) {
+				if(error.response.status !== 200){
+					console.log('NO USERNAME FOUND!!!')
+				}
+			})
 	}
 
 	render() {
