@@ -14,6 +14,7 @@ class App extends Component {
 		clientSecret: '54651c72e5577d36f2f3315c712c984ef03cb88c',
 		sort: 'created: asc',
 		search: '',
+		count: 10,
 		errors: {}
 	}
 
@@ -27,18 +28,21 @@ class App extends Component {
 
 		event.preventDefault()
 
-		const { search, sort, clientId, clientSecret} = this.state
+		const { search, sort, clientId, clientSecret, count} = this.state
 
-		return axios.get(`https://api.github.com/users/${search}/repos?&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`)
+		return axios.get(`https://api.github.com/users/${search}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`)
 			.then(response => {
 				this.setState({
 					resultList: response.data
 				})
 				console.log(this.state.resultList[0])
 			})
-			.catch(function(error) {
+			.catch((error) => {
 				if(error.response.status !== 200){
 					console.log('NO USERNAME FOUND!!!')
+					this.setState({
+						resultList: []
+					})
 				}
 			})
 	}
