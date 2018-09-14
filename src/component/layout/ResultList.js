@@ -4,7 +4,7 @@ import ResultView from './ResultView'
 
 const ResultList = (props) => {
 
-    const { resultList } = props
+    const { resultList, onAdd } = props
 
     return(
         <Fragment>
@@ -19,11 +19,18 @@ const ResultList = (props) => {
                 <tbody>
                 {
                     resultList.map((result, index) => 
-                        <ResultView
-                            key={index}
-                            index={index}
-                            result={result}
-                        />
+                    <ResultView 
+                        key={index}
+                        index={index}
+                        result={result}
+                        onAdd={onAdd}
+                    />
+                    // <tr key={index}>
+                    //     <td>{result.full_name}</td>
+                    //     <td>{result.language}</td>
+                    //     <td>-</td>
+                    //     <td><a href="#" onClick={() => onAdd(result)}>Add</a></td>
+                    // </tr>
                     )
                 }
                 </tbody>

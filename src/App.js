@@ -24,6 +24,12 @@ class App extends Component {
 		})
 	}
 
+	onAdd = (addItem) => {
+		this.setState({
+			favList: [...this.state.favList, addItem]
+		})
+	}
+
 	onSearch = (event) => {
 
 		event.preventDefault()
@@ -44,7 +50,8 @@ class App extends Component {
 						resultList: []
 					})
 				}
-			})
+			}
+		)
 	}
 
 	render() {
@@ -66,6 +73,7 @@ class App extends Component {
 						<ResultList
 							resultList = {this.state.resultList}
 							favList = {this.state.favList}
+							onAdd = {this.onAdd}
 						/>
 					</div>
 
