@@ -1,8 +1,15 @@
 import React from 'react'
 
-const FavouriteView = () => {
+const FavouriteView = (props) => {
+    const {index, result} = props
+
     return(
-        <li>Here is my favourite list</li>
+        <tr key={index}>
+            <td>{result.full_name}</td>
+            <td>{result.language}</td>
+            <td>-</td>
+            <td><a href="#">Remove</a></td>
+        </tr>
     )
 }
 

@@ -72,13 +72,15 @@ class App extends Component {
 						/>
 						<ResultList
 							resultList = {this.state.resultList}
-							favList = {this.state.favList}
+							
 							onAdd = {this.onAdd}
 						/>
 					</div>
 
 					<div className="col-ms-12 col-md-6 col-lg-6">
-						<FavouriteList />
+						<FavouriteList 
+							favList = {this.state.favList}
+						/>
 					</div>
 				</div>
 			</div>

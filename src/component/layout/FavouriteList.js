@@ -2,13 +2,32 @@ import React, { Fragment } from 'react'
 
 import FavouriteView from './FavouriteView'
 
-const FavouriteList = () => {
+const FavouriteList = (props) => {
+
+    const { favList } = props
+
     return(
         <Fragment>
-            <p>Favourite List</p>
-            <ul>
-                <FavouriteView />
-            </ul>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Language</th>
+                        <th scope="col">Latest Tag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {
+                    favList.map((result, index) => 
+                        <FavouriteView 
+                            key={index}
+                            index={index}
+                            result={result}
+                        />
+                    )
+                }
+                </tbody>
+            </table>
         </Fragment>
     )
 }
