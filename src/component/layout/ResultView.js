@@ -6,7 +6,7 @@ const ReactView = (props) => {
 
     return(
         <li key={index}>
-            {result.name}
+            {result.full_name}
         </li>
     )
 }
