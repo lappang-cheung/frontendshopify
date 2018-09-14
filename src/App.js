@@ -50,18 +50,29 @@ class App extends Component {
 	render() {
 
 		return (
-			<div>
-				<h1>My Github Favourites</h1>
-				<Search 
-					search = {this.state.search}
-					onChange = {this.onChange}
-					onSearch = {this.onSearch}
-				/>
-				<ResultList
-					resultList = {this.state.resultList}
-					favList = {this.state.favList}
-				/>
-				<FavouriteList />
+			<div className="container">
+			
+				<div className="row">
+					<div className="col-sm-12 col-md-12 col-lg-12">
+						<h1>My Github Favourites</h1>
+					</div>
+
+					<div className="col-ms-12 col-md-6 col-lg-6">
+						<Search 
+							search = {this.state.search}
+							onChange = {this.onChange}
+							onSearch = {this.onSearch}
+						/>
+						<ResultList
+							resultList = {this.state.resultList}
+							favList = {this.state.favList}
+						/>
+					</div>
+
+					<div className="col-ms-12 col-md-6 col-lg-6">
+						<FavouriteList />
+					</div>
+				</div>
 			</div>
 		)
 	}

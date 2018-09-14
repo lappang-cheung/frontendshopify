@@ -8,8 +8,15 @@ const ResultList = (props) => {
 
     return(
         <Fragment>
-            <p>Result List</p>
-            <ul>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Language</th>
+                        <th scope="col">Latest Tag</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {
                     resultList.map((result, index) => 
                         <ResultView
@@ -19,7 +26,8 @@ const ResultList = (props) => {
                         />
                     )
                 }
-            </ul>
+                </tbody>
+            </table>
         </Fragment>
     )
 }

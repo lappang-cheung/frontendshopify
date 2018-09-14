@@ -5,11 +5,12 @@ const ReactView = (props) => {
     const {index, result } = props
 
     return(
-        <li key={index}>
-            {result.full_name}
-            {result.language}
-            {result.commit}
-        </li>
+        <tr key={index}>
+            <td>{result.full_name}</td>
+            <td>{result.language}</td>
+            <td>-</td>
+            <td><a href="#">Add</a></td>
+        </tr>
     )
 }
 
