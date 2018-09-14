@@ -30,6 +30,14 @@ class App extends Component {
 		})
 	}
 
+	onRemove = (removeItem) => {
+		this.setState(prevState => ({
+			favList: prevState.favList.filter(result => {
+				return removeItem !== result
+			})
+		}))
+	}
+
 	onSearch = (event) => {
 
 		event.preventDefault()
@@ -72,7 +80,6 @@ class App extends Component {
 						/>
 						<ResultList
 							resultList = {this.state.resultList}
-							
 							onAdd = {this.onAdd}
 						/>
 					</div>
@@ -80,6 +87,7 @@ class App extends Component {
 					<div className="col-ms-12 col-md-6 col-lg-6">
 						<FavouriteList 
 							favList = {this.state.favList}
+							onRemove = {this.onRemove}
 						/>
 					</div>
 				</div>

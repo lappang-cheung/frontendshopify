@@ -4,7 +4,7 @@ import FavouriteView from './FavouriteView'
 
 const FavouriteList = (props) => {
 
-    const { favList } = props
+    const { favList, onRemove } = props
 
     return(
         <Fragment>
@@ -20,9 +20,10 @@ const FavouriteList = (props) => {
                 {
                     favList.map((result, index) => 
                         <FavouriteView 
-                            key={index}
-                            index={index}
-                            result={result}
+                            key = {index}
+                            index = {index}
+                            result = {result}
+                            onRemove = {onRemove}
                         />
                     )
                 }
