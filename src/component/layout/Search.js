@@ -1,10 +1,19 @@
 import React from 'react'
 
-const Search = () => {
+const Search = (props) => {
+
+    const { search, onChange, onSearch} = props
+
     return(
         <form>
-            <input type="search" name="search" id="searc"/>
-            <button>Search</button>
+            <input 
+                type="search" 
+                name="search" 
+                id="search"
+                value={search}
+                onChange={onChange}
+            />
+            <button onClick={onSearch}>Search</button>
         </form>
     )
 }
