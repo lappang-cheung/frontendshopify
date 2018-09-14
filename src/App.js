@@ -8,7 +8,7 @@ class App extends Component {
 
 	state = {
 		favList: [],
-		searchList: [],
+		resultList: [],
 		clientId: '294d20a0eff0847f0a18',
 		clientSecret: '54651c72e5577d36f2f3315c712c984ef03cb88c',
 		sort: 'created: asc',
@@ -32,16 +32,17 @@ class App extends Component {
 			.then(res => res.json())
 			.then(data => {
 				this.setState({
-					searchList: data
+					resultList: data
 				})
 				console.log(`The username is ${search}`)
 				console.log(`https://api.github.com/users/${search}/repos?&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`)
-				console.log(this.state.searchList[0])
+				console.log(this.state.resultList[0])
 			})
 			.catch(err => console.log(err))
 	}
 
 	render() {
+
 		return (
 			<div>
 				<h1>My Github Favourites</h1>
@@ -50,7 +51,10 @@ class App extends Component {
 					onChange = {this.onChange}
 					onSearch = {this.onSearch}
 				/>
-				<ResultList />
+				<ResultList
+					resultList = {this.state.resultList}
+					favList = {this.state.favList}
+				/>
 				<FavouriteList />
 			</div>
 		)

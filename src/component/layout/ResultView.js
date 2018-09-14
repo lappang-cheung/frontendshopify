@@ -1,8 +1,13 @@
 import React from  'react'
 
-const ReactView = () => {
+const ReactView = (props) => {
+
+    const {index, result } = props
+
     return(
-        <li>Some result</li>
+        <li key={index}>
+            {result.name}
+        </li>
     )
 }
 
