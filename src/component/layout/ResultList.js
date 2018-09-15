@@ -1,18 +1,32 @@
 import React, { Fragment, Component } from 'react'
+import axios from 'axios'
 
 import ResultView from './ResultView'
 
 class ResultList extends Component {
 
     state = {
-        bookmark: false
+        version: []
     }
 
-    hasBookmark = (item) => {
-        console.log(this.props.favList.find(result => result.full_name === item.full_name))
+    getVersion = (item) => {
+        let v = axios.get(item.tags_url)
+            .then(response => {
+                this.setState({
+                    version: response.data
+                })
+                console.log(response.data)
+            })
+            .catch((error) => {
+                if(error.response.status !== 200){
+                    console.log('NO VERSION FOUND!!!')
+                    this.setState({
+                        version: []
+                    })
+                }
+            })
+        console.log(v)
     }
-
-    // const result = inventory.find( fruit => fruit.name === 'cherries' );
 
     render(){
 
@@ -35,12 +49,11 @@ class ResultList extends Component {
                             //     <td><a href={result.html_url}>{result.full_name}</a></td>
                             //     <td>{result.language}</td>
                             //     <td> - </td>
-                            //     {this.hasBookmark(result)}
                             //     <td>
                             //         <a href="#" 
                             //             onClick={() => onAdd(result)}
                             //         >
-                            //             {this.state.bookmark ? 'Remove' : 'Add'}
+                            //             {favList.find(item => item.full_name === result.full_name) !== undefined ? ' ' : 'Add'}
                             //         </a>
                             //     </td>
                             // </tr>
