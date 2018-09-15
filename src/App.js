@@ -22,6 +22,12 @@ class App extends Component {
 		this.setState({
 			search: event.target.value
 		})
+
+		if(event.target.value === ''){
+			this.setState({
+				resultList: []
+			})
+		}
 	}
 
 	onAdd = (addItem) => {
@@ -50,7 +56,6 @@ class App extends Component {
 					resultList: response.data
 				})
 				console.log(this.state.resultList[0])
-				console.log(axios.get(this.state.resultList[3].tags_url))
 			})
 			.catch((error) => {
 				if(error.response.status !== 200){
