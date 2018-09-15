@@ -1,12 +1,16 @@
+// Required components
 import React, { Component } from 'react'
 import axios from 'axios'
 
+// Custom components
 import Search from './component/layout/Search'
 import ResultList from './component/layout/ResultList'
 import FavouriteList from './component/layout/FavouriteList'
 
+// Main component
 class App extends Component {
 
+	// Need states for the app
 	state = {
 		favList: [],
 		resultList: [],
@@ -18,16 +22,20 @@ class App extends Component {
 		errors: {}
 	}
 
+	// Storing the bookmarks into local storage
 	componentDidUpdate(){
 		const json = JSON.stringify(this.state.favList)
 		localStorage.setItem('favList', json)
 	}
 
+	// Gathering information from local storage
 	componentDidMount(){
 		try{
+			// Store and parse into JSON
 			const json = localStorage.getItem('favList')
 			const favList = JSON.parse(json)
 
+			// Saving into the array
 			if(favList){
 				this.setState({ favList})
 			}
@@ -36,22 +44,25 @@ class App extends Component {
 		}
 	}
 
+	// Getting the events from search input
 	onChange = (event) => {
 		this.setState({
 			search: event.target.value
 		})
-
+		// If the search is empty then erase the results
 		if(event.target.value === ''){
 			this.setState({
 				resultList: []
 			})
 		}
-	}
+	} 
 
 	onAdd = (addItem) => {
-		this.setState({
-			favList: [...this.state.favList, addItem]
-		})
+		if(this.state.favList.indexOf(addItem) <  0){
+			this.setState({
+				favList: [...this.state.favList, addItem]
+			})
+		}
 	}
 
 	onRemove = (removeItem) => {
@@ -73,7 +84,6 @@ class App extends Component {
 				this.setState({
 					resultList: response.data
 				})
-				console.log(this.state.resultList[0])
 			})
 			.catch((error) => {
 				if(error.response.status !== 200){
