@@ -18,6 +18,24 @@ class App extends Component {
 		errors: {}
 	}
 
+	componentDidUpdate(){
+		const json = JSON.stringify(this.state.favList)
+		localStorage.setItem('favList', json)
+	}
+
+	componentDidMount(){
+		try{
+			const json = localStorage.getItem('favList')
+			const favList = JSON.parse(json)
+
+			if(favList){
+				this.setState({ favList})
+			}
+		}catch(e){
+			// Do nothing
+		}
+	}
+
 	onChange = (event) => {
 		this.setState({
 			search: event.target.value

@@ -6,15 +6,10 @@ class ResultView extends Component{
         bookMarked: false
     }
 
-    hasBookMarker = (item) => {
-        if(this.props.favList.indexOf(item)){
+    onBookMarker = (item) => {
+        if(!(this.props.favList).indexOf(item) > 0){
             this.setState({
                 bookMarked: true
-            })
-            this.props.onAdd(item)
-        }else{
-            this.setState({
-                bookMarked: false
             })
         }
     }
@@ -30,7 +25,8 @@ class ResultView extends Component{
                 <td> - </td>
                 <td>
                     <a href="#" 
-                        onClick={() => { this.hasBookMarker(result)}}
+                        onClick={() =>{ onAdd(result), this.onBookMarker(result)}}
+                        className={this.state.bookMarked ? 'disabled' : 'active'}
                     >
                         Add
                     </a>
