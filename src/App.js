@@ -14,8 +14,7 @@ class App extends Component {
 	state = {
 		favList: [],
 		resultList: [],
-		clientId: '294d20a0eff0847f0a18',
-		clientSecret: '54651c72e5577d36f2f3315c712c984ef03cb88c',
+		token: 'f24d700704f7f1c1dbeca1096007ae5d429560a1',
 		sort: 'created: asc',
 		search: '',
 		count: 10,
@@ -82,11 +81,10 @@ class App extends Component {
 		// Prevent reload
 		event.preventDefault()
 		// Destructing from the state
-		const { search, sort, clientId, clientSecret, count, token} = this.state
-		// Store OAuth using client and secret keys
-		const keySecretUrl = `https://api.github.com/users/${search}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`
+		const { search, sort, count, token} = this.state
+		const tokenUrl = `https://api.github.com/users/${search}/repos?per_page=${count}&sort=${sort}&access_token=${token}`
 		// Promise return of the API call
-		return axios.get(keySecretUrl)
+		return axios.get(tokenUrl)
 			.then(response => {
 				// Save the repo data into object array
 				this.setState({
