@@ -56,3 +56,4 @@ Project link: https://frontendshopifychallenge.herokuapp.com
 Notes:
 - The application uses local storage from the web browser to store the bookmark repos
 - It is hosted on Heroku and need some time to load
+- To see the using Client ID and Secret please [click here](https://github.com/lappang-cheung/frontendshopify/tree/client)
