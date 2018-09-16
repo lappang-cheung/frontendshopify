@@ -41,10 +41,10 @@ class FavouriteView extends Component{
 
         return(
             <tr key={index}>
-                <td><a href={result.html_url}>{result.full_name}</a></td>
+                <td><a href={result.html_url} className="clean">{result.full_name}</a></td>
                 <td>{result.language}</td>
                 <td>{this.state.version} </td>
-                <td><button className="regularBtn" onClick={() => onRemove(result)}>Remove</button></td>
+                <td><a href="# " className="bookmark" onClick={() => onRemove(result)}>Remove</a></td>
             </tr>
         )
     }

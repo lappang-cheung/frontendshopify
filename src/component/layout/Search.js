@@ -19,7 +19,7 @@ const Search = (props) => {
                 value={search}
                 onChange={onChange}
             />
-            <button className="searchButton" onClick={onSearch}>Search</button>
+            <button className="searchBtn" onClick={onSearch}>Search</button>
         </form>
     )
 }

@@ -1,5 +1,7 @@
+// Colours needed
 $primary-color: #7433f1;
 $primary-text: #ffffff;
+$clean-primary: #000000;
 $right: #f3ecfe;
 
 body {
@@ -8,10 +10,12 @@ body {
     font-family: sans-serif;
 }
 
+// Grid CSS
 .wrapper{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
+    // Style for the header
     .header{
         grid-column-start: 1; 
         grid-column-end: 3; 
@@ -27,12 +31,29 @@ body {
         }
     }
 
+    // Style for the left side
     .leftSide{
+
+        .searchField{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            padding-top: 3em;
+            gap: 20px;
+            input{
+                grid-column-start: 1;
+                grid-column-end: 4;
+            }
+
+            .searchBtn{
+                grid-column: 4;
+            }
+        }
+
         .table{
             width: 100%;
             padding-top: 3em;
             padding-left: 5em; 
-            tr,td{
+            tr{
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 text-align: left;
@@ -40,31 +61,57 @@ body {
         }
     }
 
+    // Style for the right side
     .rightSide{
         background-color: $right;
+        height: 89vh;
         
         .table{
             width: 100%;
             padding-top: 3em;
             padding-left: 5em;
-            height: 89vh;
-            tr,td{
+            
+            tr{
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 text-align: left;
             }
-            a{
-                text-decoration: none;
-            }
         }
     }
-
 }
 
+// Button styles
+.searchBtn{
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem 0;
+    margin: 0;
+    text-decoration: none;
+    background: $primary-color;
+    color: $primary-text;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+}
+
+// Visibility
 .disabled{
     visibility: hidden;
 }
 
 .active{
     visibility: visible;
+}
+
+// Others
+.clean{
+    text-decoration: none;
+    color: $clean-primary;
+}
+
+.bookmark{
+    color: $primary-color;
 }
