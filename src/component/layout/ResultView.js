@@ -26,7 +26,7 @@ class ResultView extends Component{
     render(){
 
         const { index, result, onAdd} = this.props
-        {this.getVersion(result)}
+        this.getVersion(result)
 
         return(
             <tr key={index}>
