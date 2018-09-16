@@ -51,4 +51,8 @@ Requirements:
 
 # Project Demo
 
-In progress
+Project link: https://frontendshopifychallenge.herokuapp.com
+
+Notes:
+- The application uses local storage from the web browser to store the bookmark repos
+- It is hosted on Heroku and need some time to load
