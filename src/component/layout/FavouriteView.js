@@ -44,7 +44,7 @@ class FavouriteView extends Component{
                 <td><a href={result.html_url}>{result.full_name}</a></td>
                 <td>{result.language}</td>
                 <td>{this.state.version} </td>
-                <td><a href="#" onClick={() => onRemove(result)}>Remove</a></td>
+                <td><button className="regularBtn" onClick={() => onRemove(result)}>Remove</button></td>
             </tr>
         )
     }
