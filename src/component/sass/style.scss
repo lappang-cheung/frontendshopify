@@ -23,7 +23,7 @@ body {
         grid-row-end: 2;
         padding: 2rem 0;
         background-color: $primary-color;
-
+        // Styling for the title
         &_title{
             font-size: 2em;
             text-align: center;
@@ -34,25 +34,33 @@ body {
     // Style for the left side
     .leftSide{
 
+        // Form styling
         .searchField{
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             padding-top: 3em;
             gap: 20px;
+
+            // Input styling
             input{
                 grid-column-start: 1;
                 grid-column-end: 4;
+                border-radius: 4px;
+                border: 1px solid grey;
+                padding: 0 1em;
+                font-weight: 400;
             }
-
+            // Set position for search button
             .searchBtn{
                 grid-column: 4;
             }
         }
-
+        // Table styling
         .table{
             width: 100%;
             padding-top: 3em;
-            padding-left: 5em; 
+            padding-left: 5em;
+            // Styling the table headers 
             tr{
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
@@ -65,12 +73,13 @@ body {
     .rightSide{
         background-color: $right;
         height: 89vh;
-        
+
+        // Table styling
         .table{
             width: 100%;
             padding-top: 3em;
             padding-left: 5em;
-            
+            // Styling the table headers
             tr{
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);

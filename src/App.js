@@ -57,14 +57,18 @@ class App extends Component {
 		}
 	} 
 
+	// Add bookmark item(s)
 	onAdd = (addItem) => {
+		// Check if repo has been bookmarked
 		if(this.state.favList.indexOf(addItem) <  0){
+			// Add into the bookmark array
 			this.setState({
 				favList: [...this.state.favList, addItem]
 			})
 		}
 	}
 
+	// Remove bookmark item(s)
 	onRemove = (removeItem) => {
 		this.setState(prevState => ({
 			favList: prevState.favList.filter(result => {
@@ -73,21 +77,25 @@ class App extends Component {
 		}))
 	}
 
+	// Search using Github v3 API
 	onSearch = (event) => {
-
+		// Prevent reload
 		event.preventDefault()
-
+		// Destructing from the state
 		const { search, sort, clientId, clientSecret, count} = this.state
-
+		// Promise return of the API call
 		return axios.get(`https://api.github.com/users/${search}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`)
 			.then(response => {
+				// Save the repo data into object array
 				this.setState({
 					resultList: response.data
 				})
 			})
 			.catch((error) => {
+				// Check if user exist
 				if(error.response.status !== 200){
 					console.log('NO USERNAME FOUND!!!')
+					// Set to none if user not found
 					this.setState({
 						resultList: []
 					})
@@ -95,9 +103,11 @@ class App extends Component {
 			}
 		)
 	}
-
+	/**
+	 * @COMP - Search Component, Results Components & Favourite Components
+	 * @DESC - Renders the all the components needed for the application
+ 	 */ 
 	render() {
-
 		return (
 			<div className="wrapper">
 				<header className="header">
@@ -130,4 +140,5 @@ class App extends Component {
 	}
 }
 
+// Export the component
 export default App;

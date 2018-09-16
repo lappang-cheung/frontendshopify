@@ -9,7 +9,7 @@ const Search = (props) => {
 
     // Destructing from props
     const { search, onChange, onSearch} = props
-
+    // Render the form with input and button
     return(
         <form className="searchField">
             <input 

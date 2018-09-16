@@ -24,7 +24,11 @@ body {
     gap: 20px; }
     .wrapper .leftSide .searchField input {
       grid-column-start: 1;
-      grid-column-end: 4; }
+      grid-column-end: 4;
+      border-radius: 4px;
+      border: 1px solid grey;
+      padding: 0 1em;
+      font-weight: 400; }
     .wrapper .leftSide .searchField .searchBtn {
       grid-column: 4; }
   .wrapper .leftSide .table {
