@@ -11,9 +11,9 @@ const FavouriteList = (props) => {
             <table className="table">
                 <thead>
                     <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Language</th>
-                        <th scope="col">Latest Tag</th>
+                        <th>Name</th>
+                        <th>Language</th>
+                        <th>Latest Tag</th>
                     </tr>
                 </thead>
                 <tbody>

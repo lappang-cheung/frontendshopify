@@ -40,6 +40,7 @@ class ResultList extends Component {
                             <th scope="col">Name</th>
                             <th scope="col">Language</th>
                             <th scope="col">Latest Tag</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
