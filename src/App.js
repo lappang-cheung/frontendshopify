@@ -14,7 +14,7 @@ class App extends Component {
 	state = {
 		favList: [],
 		resultList: [],
-		token: 'PUT YOUR OWN TOKEN',
+		token: '<PLACE YOUR OWN TOKEN>',
 		sort: 'created: asc',
 		search: '',
 		count: 10,
@@ -81,8 +81,8 @@ class App extends Component {
 		// Prevent reload
 		event.preventDefault()
 		// Destructing from the state
-		const { search, sort, count, token} = this.state
-		const tokenUrl = `https://api.github.com/users/${search}/repos?per_page=${count}&sort=${sort}&access_token=${token}`
+		const { search, sort, clientId, clientSecret, count, token} = this.state
+		const tokenUrl = `https://api.github.com/users/${search}/repos?per_page=${count}&sort=${sort}&?access_token=${token}`
 		// Promise return of the API call
 		return axios.get(tokenUrl)
 			.then(response => {
