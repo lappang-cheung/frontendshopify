@@ -8,6 +8,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - [Installation](#installation)
 
+- [Project Demo](#project-demo)
+
 
 # Shopify Web Development Challenge
 
@@ -46,3 +48,7 @@ Requirements:
 
 1. First run "npm install" to install the node packages
 2. To execute the application run "npm run start"
+
+#Project Demo
+
+In progress
