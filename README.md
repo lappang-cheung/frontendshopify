@@ -13,7 +13,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Build a web app to search Github repositories, favourite repos, manage favourites.
 
-## Instructions
+### Instructions
 - **Reproduce the designs** provided in the [screenshots](screenshots/desktop.jpg)
 - Must use Github API **v3 or v4**
 - Typing in the search input field should **NOT** perform an API call
@@ -35,7 +35,7 @@ Build a web app to search Github repositories, favourite repos, manage favourite
 			- render the "Remove" button **if the repo has been favourited**
 			- clicking the "Remove" button should remove the repo from the favourites list
 
-## Notes
+### Notes
 - [Github Developer](https://developer.github.com/)
 - [Docs on how to create a personal access token to make request to the Github API](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)
 
