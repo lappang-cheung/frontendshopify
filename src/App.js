@@ -81,7 +81,7 @@ class App extends Component {
 		// Prevent reload
 		event.preventDefault()
 		// Destructing from the state
-		const { search, sort, clientId, clientSecret, count, token} = this.state
+		const { search, sort, count, token} = this.state
 		const tokenUrl = `https://api.github.com/users/${search}/repos?per_page=${count}&sort=${sort}&?access_token=${token}`
 		// Promise return of the API call
 		return axios.get(tokenUrl)
