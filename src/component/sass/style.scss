@@ -42,11 +42,12 @@ body {
 
     .rightSide{
         background-color: $right;
-        height: 100%;
+        
         .table{
             width: 100%;
             padding-top: 3em;
-            padding-left: 5em; 
+            padding-left: 5em;
+            height: 89vh;
             tr,td{
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
