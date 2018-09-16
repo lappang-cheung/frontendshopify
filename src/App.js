@@ -14,7 +14,7 @@ class App extends Component {
 	state = {
 		favList: [],
 		resultList: [],
-		token: '<PLACE YOUR OWN TOKEN>',
+		token: 'f24d700704f7f1c1dbeca1096007ae5d429560a1',
 		sort: 'created: asc',
 		search: '',
 		count: 10,
