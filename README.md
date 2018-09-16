@@ -45,6 +45,7 @@ Build a web app to search Github repositories, favourite repos, manage favourite
 
 Requirements:
 - NodeJs installed with lastest release and ReactJs version 16+
+- Setup your own Client ID and Client with a callback URL
  
 1. First run "npm install" to install the node packages
 2. To execute the application run "npm run start"
@@ -56,3 +57,4 @@ Project link: https://frontendshopifychallenge.herokuapp.com
 Notes:
 - The application uses local storage from the web browser to store the bookmark repos
 - It is hosted on Heroku and need some time to load
+- To checkout the OAuth token version, [click here](https://github.com/lappang-cheung/frontendshopify)

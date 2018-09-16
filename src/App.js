@@ -14,8 +14,8 @@ class App extends Component {
 	state = {
 		favList: [],
 		resultList: [],
-		clientId: '294d20a0eff0847f0a18',
-		clientSecret: '54651c72e5577d36f2f3315c712c984ef03cb88c',
+		clientId: 'CLIENT_ID_KEY',
+		clientSecret: 'CLIENT_SECRET',
 		sort: 'created: asc',
 		search: '',
 		count: 10,
