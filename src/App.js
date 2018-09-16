@@ -1,5 +1,5 @@
 // Required components
-import React, { Component, Fragment } from 'react'
+import React, { Component} from 'react'
 import axios from 'axios'
 
 // Custom components
@@ -99,13 +99,13 @@ class App extends Component {
 	render() {
 
 		return (
-			<Fragment>
+			<div className="wrapper">
 				<header className="header">
 					<h1 className="header_title">
 						My Github Favorites
 					</h1>
 				</header>
-				<div className="main">
+				
 					<div className="leftSide">
 						<Search 
 							search = {this.state.search}
@@ -124,8 +124,8 @@ class App extends Component {
 							onRemove = {this.onRemove}
 						/>
 					</div>
-				</div>
-			</Fragment>
+				
+			</div>
 		)
 	}
 }

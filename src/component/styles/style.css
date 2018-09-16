@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif; }
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); }
+  .wrapper .header {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding: 2rem 0;
+    background-color: #7433f1; }
+    .wrapper .header_title {
+      font-size: 2em;
+      text-align: center;
+      color: #ffffff; }
+  .wrapper .rightSide {
+    background-color: #f3ecfe;
+    grid-column: 2 / 2;
+    grid-row: 2; }
+
+.disabled {
+  visibility: hidden; }
+
+.active {
+  visibility: visible; }

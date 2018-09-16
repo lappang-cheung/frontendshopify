@@ -5,7 +5,7 @@ const Search = (props) => {
     const { search, onChange, onSearch} = props
 
     return(
-        <form>
+        <form className="searchField">
             <input 
                 type="search" 
                 name="search" 
@@ -13,7 +13,7 @@ const Search = (props) => {
                 value={search}
                 onChange={onChange}
             />
-            <button onClick={onSearch}>Search</button>
+            <button className="searchButton" onClick={onSearch}>Search</button>
         </form>
     )
 }

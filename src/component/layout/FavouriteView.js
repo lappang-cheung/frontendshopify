@@ -7,20 +7,31 @@ class FavouriteView extends Component{
         version: '-'
     }
 
+    _isMounted = false
     getVersion = async (item) => {
-
-        const result = await axios.get(item.tags_url)
 			
 		try{
-            if(result){
-                this.setState({
-                    version: result.data[0].name
-                })
+            const result = await axios.get(item.tags_url)
+
+
+            if(this._isMounted && result){
+                    
+                    this.setState({
+                        version: result.data[0].name
+                    })
+                
             }
         }catch(e){
             // Do nothing
         }
+    }
 
+    componentDidMount(){
+        this._isMounted = true
+    }
+
+    componentWillUnmount(){
+        this._isMounted = false
     }
 
     render(){
