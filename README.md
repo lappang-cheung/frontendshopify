@@ -44,11 +44,11 @@ Build a web app to search Github repositories, favourite repos, manage favourite
 # Installation
 
 Requirements:
-- NodeJs installed with version of 16 or higher
-
+- NodeJs installed with lastest release and ReactJs version 16+
+ 
 1. First run "npm install" to install the node packages
 2. To execute the application run "npm run start"
 
-#Project Demo
+# Project Demo
 
 In progress
