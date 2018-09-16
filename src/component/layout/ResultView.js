@@ -22,7 +22,7 @@ class ResultView extends Component{
             const result = await axios.get(item.tags_url)
             // Check if result exist and has been mounted
             if(this._isMounted && result){
-                // 
+                // Store the latest version of repo
                 this.setState({
                     version: result.data[0].name
                 })
