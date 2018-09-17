@@ -37,14 +37,14 @@ body {
         // Form styling
         .searchField{
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(12, 1fr);
             padding-top: 3em;
             gap: 20px;
 
             // Input styling
             input{
-                grid-column-start: 1;
-                grid-column-end: 4;
+                grid-column-start: 2;
+                grid-column-end: 8;
                 border-radius: 4px;
                 border: 1px solid grey;
                 padding: 0 1em;
@@ -52,7 +52,8 @@ body {
             }
             // Set position for search button
             .searchBtn{
-                grid-column: 4;
+                grid-column-start: 8;
+                grid-column-end: 10;
             }
         }
         // Table styling
