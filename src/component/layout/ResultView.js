@@ -2,6 +2,8 @@
 import React, {Component} from  'react'
 import axios from 'axios'
 
+import {MyContext} from '../contextApi/MyProvider'
+
 /**
  * @COMP - ResultView component
  * @DESC - Render the view of the individual results from repo
@@ -41,27 +43,36 @@ class ResultView extends Component{
         this._isMounted = false
     }
 
-    render(){
-        // Destructing from the props
-        const { index, result, onAdd} = this.props
+    renderUI = (context) => {
         // Get the version of the repo for rendering
-        this.getVersion(result)
-        // Render all the individual view information
-        return(
+        this.getVersion(context.state.result)
+
+        return context.state.resultList.map((result, index) => 
             <tr key={index}>
-                <td><a href={result.html_url} className="clean">{result.full_name}</a></td>
+                <td><a href={result.html_url} className="linkUrl">{result.full_name}</a></td>
                 <td>{result.language}</td>
                 
                 <td>{this.state.version} </td>
                 <td>
                     <a href="# "
-                        className="linkUrl"
-                        onClick={() => onAdd(result)}
+                        className="bookmark"
+                        onClick={() => context.onAdd(result)}
                     >
-                        {this.props.favList.find(item => item.full_name === result.full_name) !== undefined ? ' ' : 'Add'}
+                        {context.state.favList.find(item => item.full_name === result.full_name) !== undefined ? ' ' : 'Add'}
                     </a>
                 </td>
             </tr>
+        )
+    }
+
+    render(){
+        // Render all the individual view information
+        return(
+           <MyContext.Consumer>
+                {(context) => (
+                    this.renderUI(context)
+                )}
+           </MyContext.Consumer>
         )
     }
 }

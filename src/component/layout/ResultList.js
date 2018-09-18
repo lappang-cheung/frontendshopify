@@ -7,9 +7,8 @@ import ResultView from './ResultView'
  * @COMP - ResultList component
  * @DESC - Render a list of views for each individual repo from user
  */
-const ResultList = props =>{
-    // Destructing from the props
-    const { resultList, onAdd, favList} = props
+const ResultList = () =>{
+
     // Table element and iterate through the resultList
     return(
         <table className="table">
@@ -22,15 +21,7 @@ const ResultList = props =>{
             </thead>
             <tbody>
             {
-                resultList.map((result, index) => 
-                    <ResultView
-                        key={index}
-                        index={index}
-                        result={result}
-                        favList={favList}
-                        onAdd={onAdd}
-                    />
-                )
+                <ResultView />
             }
             </tbody>
         </table>

@@ -2,6 +2,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+import {MyContext} from '../contextApi/MyProvider'
+
 /**
  * @COMP - FavouriteView component
  * @DESC - Render the view of the individual bookmark repo
@@ -40,19 +42,28 @@ class FavouriteView extends Component{
         this._isMounted = false
     }
 
-    render(){
-        // Destructing from the props
-        const {index, result, onRemove} = this.props
-        // Get the version of the repo for rendering
-        this.getVersion(result)
-        // Render all the individual view information
-        return(
+    renderUI = (context) => {
+        this.getVersion(context.state.result)
+
+        return context.state.favList.map((result, index) => 
             <tr key={index}>
                 <td><a href={result.html_url} className="linkUrl">{result.full_name}</a></td>
                 <td>{result.language}</td>
                 <td>{this.state.version} </td>
-                <td><a href="# " className="bookmark" onClick={() => onRemove(result)}>Remove</a></td>
+                <td><a href="# " className="bookmark" onClick={() => context.onRemove(result)}>Remove</a></td>
             </tr>
+        )
+    }
+
+    render(){
+        
+        // Render all the individual view information
+        return(
+            <MyContext.Consumer>
+                {(context) => (
+                    this.renderUI(context)
+                )}
+            </MyContext.Consumer>
         )
     }
 }

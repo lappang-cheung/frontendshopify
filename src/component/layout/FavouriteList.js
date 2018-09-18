@@ -8,8 +8,7 @@ import FavouriteView from './FavouriteView'
  * @DESC - Render a list of views for each individual repo from user
  */
 const FavouriteList = props => {
-    // Destructing from the props
-    const { favList, onRemove } = props
+    
     // Table element and iterate through the FavList
     return(
         <table className="table">
@@ -22,14 +21,7 @@ const FavouriteList = props => {
             </thead>
             <tbody>
             {
-                favList.map((result, index) => 
-                    <FavouriteView 
-                        key = {index}
-                        index = {index}
-                        result = {result}
-                        onRemove = {onRemove}
-                    />
-                )
+                <FavouriteView />
             }
             </tbody>
         </table>
