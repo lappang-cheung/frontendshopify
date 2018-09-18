@@ -12,7 +12,8 @@ class ResultView extends Component{
 
     // For only getting the version
     state = {
-        version: '-'
+        version: '-',
+        items: [],
     }
     // Needed for async callback
     _isMounted = false
@@ -45,10 +46,11 @@ class ResultView extends Component{
 
     renderUI = (context) => {
         // Get the version of the repo for rendering
-        this.getVersion(context.state.result)
+        this.getVersion(result)
 
-        return context.state.resultList.map((result, index) => 
-            <tr key={index}>
+        return context.state.resultList.map(async (result, index) =>  {
+            // await this.getVersion(result);
+            return (<tr key={index}>
                 <td><a href={result.html_url} className="linkUrl">{result.full_name}</a></td>
                 <td>{result.language}</td>
                 
@@ -61,20 +63,83 @@ class ResultView extends Component{
                         {context.state.favList.find(item => item.full_name === result.full_name) !== undefined ? ' ' : 'Add'}
                     </a>
                 </td>
-            </tr>
-        )
+            </tr>)
+        })
     }
 
+    renderItem(context, index, {result, version, favorite}) {
+        // this.state.version ==> data.version
+        // context.state.favList.find(item => item.full_name === result.full_name) !== undefined ? ' ' : 'Add' ==> data.favorite
+        return (<tr key={index}>
+            <td><a href={result.html_url} className="linkUrl">{result.full_name}</a></td>
+            <td>{result.language}</td>
+            
+            <td>{version} </td>
+            <td>
+                <a href="# "
+                    className="bookmark"
+                    onClick={() => context.onAdd(result)}
+                >
+                    {favorite}
+                </a>
+            </td>
+        </tr>)
+    }
+    renderItems(context, items) {
+        for (const item of items) {
+
+        }
+    }
     render(){
         // Render all the individual view information
+        const items = this.state.items;
         return(
            <MyContext.Consumer>
-                {(context) => (
-                    this.renderUI(context)
-                )}
+                {
+                    context => items.map((item, index) => {
+                        this.renderItem(context, index, {result, version, favorite})
+                    })
+                }
            </MyContext.Consumer>
         )
     }
+
 }
 // Export the component
 export default ResultView
+
+// render(){
+//     // Render all the individual view information
+//     return(
+//        <MyContext.Consumer>
+//             {(context) => (
+//                 this.renderUI(context)
+//             )}
+//        </MyContext.Consumer>
+//     )
+// }
+
+// async updateItems(context) {
+//     const results = context.state.resultList;
+//     const length = results.length;
+
+//     if (!length) {
+//         this.setState({items: []});
+//         return;
+//     }
+
+//     const items = new Array(length);
+//     const promises = new Array(length);
+//     let i = 0;
+
+//     for (const result of results) {
+//         const index = i++;
+//         const version = await (promises[index] = this.getVersion(result));
+//         const favorite = context.state.favList.find(item => item.full_name === result.full_name) !== undefined ? ' ' : 'Add';
+//         items[index] = {index, context, version, favorite, result};
+//     }
+
+//     await Promises.all(promises);
+
+//     this.setState({items});
+// }

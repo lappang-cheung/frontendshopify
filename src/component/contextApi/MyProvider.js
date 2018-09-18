@@ -3,15 +3,66 @@ import axios from 'axios'
 
 export const MyContext = React.createContext()
 
+const noop = () => {};
+const VOID = Object.freeze({});
+
 class MyProvider extends Component{
 
     state = {
         favList: [],
-		resultList: [],
+        resultList: [],
+        resultItems: [],
 		token: 'f24d700704f7f1c1dbeca1096007ae5d429560a1',
 		sort: 'created: asc',
 		search: '',
 		count: 10
+    }
+
+    async updateResultItems() {
+        const context = this;
+        const results = context.state.resultList;
+
+        console.log({
+            context,
+            results
+        })
+        const length = results.length;
+        const items = new Array(length);
+
+        if (length) {
+
+            const promises = []; // new Array(length);
+
+            const favorites = context.state.favList.map(item => item.full_name);
+
+            let i = 0;
+            for (const result of results) {
+                const index = i++;
+                const favorite = (favorites.includes(result.full_name) && ' ') || 'Add';
+                const item = items[index] = {
+                    index,
+                    context: null,
+                    result,
+                    favorite,
+                    version: '-'
+                };
+
+                if (!result.tags_url) continue;
+                const promise = promises[index] = axios.get(item.tags_url).catch(noop);
+                const {
+                    data: [{
+                        name: version = '-'
+                    } = VOID] = ''
+                } = await promise || VOID;
+                item.version = version;
+            }
+
+            await Promise.all(promises);
+        }
+        this.setState({
+            resultItems: items
+        });
+        // return items;
     }
 
     render(){
@@ -50,7 +101,7 @@ class MyProvider extends Component{
                     onSearch: (event) => {
                         // Prevent reload
                         event.preventDefault()
-                        
+                        console.log('I have been pressed')
                         // Destructing from the state
                         const { search, sort, count, token} = this.state
                         const tokenUrl = `https://api.github.com/users/${search}/repos?per_page=${count}&sort=${sort}&?access_token=${token}`
@@ -60,7 +111,8 @@ class MyProvider extends Component{
                                 // Save the repo data into object array
                                 this.setState({
                                     resultList: response.data
-                                })
+                                });
+                                this.updateResultItems();
                             })
                             .catch((error) => {
                                 // Check if user exist
