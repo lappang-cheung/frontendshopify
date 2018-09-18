@@ -12,11 +12,11 @@ import FavouriteList from './component/layout/FavouriteList'
 // Main component
 class App extends Component {
 
-	// // Storing the bookmarks into local storage
-	// componentDidUpdate(){
-	// 	const json = JSON.stringify(this.state.favList)
-	// 	localStorage.setItem('favList', json)
-	// }
+	// Storing the bookmarks into local storage
+	componentDidUpdate(){
+		const json = JSON.stringify(this.state.favList)
+		localStorage.setItem('favList', json)
+	}
 
 	// // Gathering information from local storage
 	// componentDidMount(){
