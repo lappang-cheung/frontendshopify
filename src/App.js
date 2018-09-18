@@ -116,7 +116,7 @@ class App extends Component {
 					</h1>
 				</header>
 				
-					<div className="leftSide">
+					<div className="repoSide">
 						<Search 
 							search = {this.state.search}
 							onChange = {this.onChange}
@@ -128,7 +128,7 @@ class App extends Component {
 							onAdd = {this.onAdd}
 						/>
 					</div>
-					<div className="rightSide">
+					<div className="bookmarkSide">
 						<FavouriteList 
 							favList = {this.state.favList}
 							onRemove = {this.onRemove}

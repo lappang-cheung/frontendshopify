@@ -55,7 +55,7 @@ class ResultView extends Component{
                 <td>{this.state.version} </td>
                 <td>
                     <a href="# "
-                        className="bookmark"
+                        className="linkUrl"
                         onClick={() => onAdd(result)}
                     >
                         {this.props.favList.find(item => item.full_name === result.full_name) !== undefined ? ' ' : 'Add'}

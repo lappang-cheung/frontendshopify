@@ -31,8 +31,8 @@ body {
         }
     }
 
-    // Style for the left side
-    .leftSide{
+    // Style for the left side for displaying the repo
+    .repoSide{
 
         // Form styling
         .searchField{
@@ -70,8 +70,8 @@ body {
         }
     }
 
-    // Style for the right side
-    .rightSide{
+    // Style for the right side for displaying the bookmark
+    .bookmarkSide{
         background-color: $right;
         height: 89vh;
 
@@ -106,22 +106,16 @@ body {
     cursor: pointer;
     text-align: center;
 }
+ 
+// Text styles
 
-// Visibility
-.disabled{
-    visibility: hidden;
-}
-
-.active{
-    visibility: visible;
-}
-
-// Others
-.clean{
+// Make sure link url has the default style black text style
+.linkUrl{
     text-decoration: none;
     color: $clean-primary;
 }
 
+// Make sure the bookmark link has the default colour
 .bookmark{
     color: $primary-color;
 }
