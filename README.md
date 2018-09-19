@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-
+NOTE: TESTING CONTEXT API [NOT PART OF SUBMISSION]
 
 # Table of Contents
 
